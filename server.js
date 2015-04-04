@@ -38,11 +38,11 @@ db.on('error',console.error.bind(console,'connection error!'));
 db.once('open',function callback(){
     console.log('db opened...');
 });
-var MessageModel = mongoose.model('Message',{message:String});
-var mongoMessage;
-MessageModel.findOne().exec(function(err,messageDoc){
-    mongoMessage = messageDoc.message;
-});
+//var MessageModel = mongoose.model('Message',{message:String});
+//var mongoMessage;
+//MessageModel.findOne().exec(function(err,messageDoc){
+//    mongoMessage = messageDoc.message;
+//});
 
 app.get('/partials/:partialPath', function (request,response) {
     console.log('partialPath log: '+request.params.partialPath);
@@ -51,8 +51,8 @@ app.get('/partials/:partialPath', function (request,response) {
 
 app.get('*',function(request,response){
     console.log('*');
-    response.render('index',
-        {mongoMessage:mongoMessage}
+    response.render('index'
+        //, {mongoMessage:mongoMessage}
     );
 });
 
